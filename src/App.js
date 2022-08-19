@@ -1,12 +1,13 @@
 import React, { useRef } from 'react';
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll'
+import Features from './components/Features';
 import Header from './components/Header';
 import Hero from './components/Hero';
 
 function App() {
   const containerRef = useRef(null)
   return (
-    <div>
+    <div className='w-full h-[700px]'>
       <LocomotiveScrollProvider
   options={
     {
@@ -26,6 +27,7 @@ function App() {
   <main data-scroll-container ref={containerRef}>
       <Header />
       <Hero />
+      <Features/>
   </main>
 </LocomotiveScrollProvider>
       

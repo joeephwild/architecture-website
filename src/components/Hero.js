@@ -36,7 +36,7 @@ const parentTextVariant = {
 
 const Hero = () => {
   return (
-    <motion.div  className='w-full h-[700px]'>
+    <div  className=''>
       <motion.span  initial={{
         x: 0,
           opacity: 0
@@ -66,7 +66,7 @@ const Hero = () => {
           )
         })}
        </Carousel>
-    </motion.div>
+    </div>
   )
 }
 
