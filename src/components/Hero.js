@@ -1,38 +1,72 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import "@fontsource/libre-bodoni";
 import { HeroImage } from '../utils/HeroData';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
+const textVariant = {
+  initial: {
+    x: 400,
+  },
+  animate: {
+    x: 0,
+
+     transition: {
+        duration: 2,
+        type: "tween",
+        ease: "easeInOut",
+     },
+  },
+};
+
+const parentTextVariant = {
+  initial: {
+    x: 0,
+    y: 0,
+  },
+  animate: {
+    y: 0,
+    x: 0,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+}
+
 const Hero = () => {
   return (
-    <div className=''>
-    <div style={{ fontFamily: "Libre Bodoni"}} className='relative top-0 w-full h-[700px]'>
-      <Carousel 
-      autoPlay
-      infiniteLoop
-      showStatus={false}
-      showIndicators={false}
-      animationHandler="fade"
-      showArrows={false}
-      showThumbs={false}
-      interval={15000} 
-      transitionTime={3000}
-      >
-        {HeroImage.map((item, id) => {
-          return <div className="">
-            <img src={item.pics} className="max-w-full h-[700px]" alt={item.name} />
-            <div className='bg-white object-cover w-[300px]'>
-            <div style={{ fontFamily: "Libre Bodoni"}} className='flex flex-col absolute top-[4%] bg-white w-[450px] h-[500x] left-6 justify-center items-center'>
-               <span className='text-5xl font-bold'>{item.name}</span>
+    <motion.div  className='w-full h-[700px]'>
+      <motion.span  initial={{
+        x: 0,
+          opacity: 0
+      }} animate={{
+        x: 1750,
+        opacity: 1,
+      }}
+      transition={{
+        duration: 2,
+        type: "tween",
+        ease: "easeInOut",
+      }}  className='text-[145px]  font-extrabold text-[#FFD700]'>RESPLENDENCY</motion.span>
+       <Carousel
+       infiniteLoop
+       autoPlay
+       showIndicators={false}
+       showArrows={false}
+       showThumbs={false}
+       interval={2000}
+       showStatus={false}
+       animationHandler="fade" >
+        {HeroImage.map((image, id)=> {
+          return(
+            <div key={id} className="m-8  overflow-hiddden">
+              <img className="max-w-full rounded-xl h-[700px]" src={image.pics} alt={image.name} />
             </div>
-            </div>
-            
-          </div>
+          )
         })}
-        </Carousel>
-    </div>
-    </div>
+       </Carousel>
+    </motion.div>
   )
 }
 
